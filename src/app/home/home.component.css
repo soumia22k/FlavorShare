@@ -1,0 +1,49 @@
+.banner {
+    position: relative;
+    width: 100%;
+  }
+  
+  .banner img {
+    width: 100%;
+    border-radius: 12px;
+  }
+  
+  .banner-text {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 2px 2px 4px #000;
+  }
+  
+  .categories {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px 0;
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+  }
+  
+  .recipes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #fbe9e9;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .card {
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .card img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
