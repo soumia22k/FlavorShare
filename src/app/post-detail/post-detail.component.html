@@ -1,1 +1,9 @@
-<p>post-detail works!</p>
+<div *ngIf="post" class="container">
+    <h2>{{ post.title }}</h2>
+    <img [src]="post.images" alt="{{ post.title }}" class="img-fluid" />
+    <p><strong>Catégorie :</strong> {{ post.category }}</p>
+    <p>{{ post.content }}</p>
+    
+    <a routerLink="/posts">← Retour à la liste des articles</a>
+  </div>
+  

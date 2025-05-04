@@ -1,23 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PostService } from '../post.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
-import { PostDetailComponent } from './post-detail.component';
+@Component({
+  selector: 'app-post-detail',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  templateUrl: './post-detail.component.html',
+  styleUrl: './post-detail.component.css'
+})
+export class PostDetailComponent implements OnInit {
+  post: any;
 
-describe('PostDetailComponent', () => {
-  let component: PostDetailComponent;
-  let fixture: ComponentFixture<PostDetailComponent>;
+  constructor(
+    private route: ActivatedRoute,
+    private postService: PostService
+  ) {}
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [PostDetailComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(PostDetailComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  ngOnInit(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.postService.getPostById(id).subscribe((data: any) => {
+      this.post = data;
+    });
+  }
+}

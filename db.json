@@ -1,0 +1,19 @@
+{
+    "posts": [
+      {
+        "id": 1,
+        "title": "Recette Couscous",
+        "content": "Voici comment préparer un bon couscous...",
+        "category": "Maroc",
+        "images": "assets/couscous.jpg"
+      },
+      {
+        "id": 2,
+        "title": "Tajine de poulet",
+        "content": "Délicieux tajine avec citron confit...",
+        "category": "Maroc",
+        "images": "assets/tajine.jpg"
+      }
+    ]
+  }
+  

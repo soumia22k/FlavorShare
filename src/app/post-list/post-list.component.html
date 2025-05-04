@@ -1,28 +1,41 @@
-<div class="container">
-    <h2>Recettes récents</h2>
-    <div class="filters">
-        <input type="text" placeholder="Rechercher par titre ..."[(ngModel)]="searchTerm"(input)="filterPosts()"/>
-        <select [(ngModel)]="selectedCategory" (change)="filterPosts()">
-            <option value="">Toutes les catégories</option>
-            <option *ngFor="let category of categories">{{category}}</option>
-        </select>
+<h2 class="my-4">Recettes récents</h2>
+
+<!-- Barre de recherche + filtre catégorie -->
+<div class="row g-2 mb-4">
+  <div class="col-12 col-md-6">
+    <input
+      type="text"
+      placeholder="Rechercher par titre ..."
+      [(ngModel)]="searchTerm"
+      (input)="filterPosts()"
+      class="form-control"
+    />
+  </div>
+
+  <div class="col-12 col-md-6">
+    <select
+      [(ngModel)]="selectedCategory"
+      (change)="filterPosts()"
+      class="form-select"
+    >
+      <option value="">Toutes les catégories</option>
+      <option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<!-- Grille des posts -->
+<div class="row">
+  <div class="col-12 col-sm-6 col-lg-4 mb-4" *ngFor="let post of filteredPosts">
+    <div class="card h-100 shadow-sm">
+      <img [src]="post.images" class="card-img-top" [alt]="post.title" />
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <p class="card-text">{{ post.content }}</p>
+        <span class="badge bg-secondary mt-auto">{{ post.category }}</span>
+      </div>
     </div>
-<div class="post-cards">
-    <div *ngFor="let post of filteredPosts" class="post-cards">
-        <img [src]="post.images" alt="post images">
-    
-    <h3>{{post.title}}</h3>
-
-    <p>{{post.content | slice:0:100}}...</p>
-
-    <small>Catégorie : {{ post.category }}</small><br />
-
-    <a [routerLink]="['/posts', post.id]">Lire plus</a>
-
+  </div>
 </div>
-
-</div>
-
-
-</div>
-
